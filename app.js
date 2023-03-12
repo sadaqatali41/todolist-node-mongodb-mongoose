@@ -57,8 +57,17 @@ app.post("/", function(req, res){
   });
 });
 
-app.get("/work", function(req,res){
-  res.render("list", {listTitle: "Work List", newListItems: workItems});
+app.post('/delete', function(req, res){
+  const checkedItemId = req.body.checkbox;
+
+  Item.findByIdAndRemove(checkedItemId).then(function(result){
+    console.log('Deleted Successfully');
+    res.redirect('/');
+  });
+});
+
+app.get('/:customListName', function(req, res){
+  console.log(req.params.customListName);
 });
 
 app.get("/about", function(req, res){
