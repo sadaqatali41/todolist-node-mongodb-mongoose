@@ -67,7 +67,7 @@ app.post('/delete', function(req, res){
 });
 
 app.get('/:customListName', function(req, res){
-  console.log(req.params.customListName);
+  const customListName = req.params.customListName;
 });
 
 app.get("/about", function(req, res){
